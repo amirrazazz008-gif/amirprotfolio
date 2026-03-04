@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amir Raza - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 1rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e2e8f0 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #818cf8;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #e2e8f0;
+            border: 2px solid #334155;
+        }
+
+        .btn-secondary:hover {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #e2e8f0 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: #0f172a;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #334155;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #6366f1;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: #94a3b8;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #1e293b;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #0f172a;
+            border-radius: 1rem;
+            border: 1px solid #334155;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #6366f1;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            padding: 3rem;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border-radius: 1rem;
+            border: 1px solid #334155;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+        }
+
+        .modal-close:hover {
+            color: #e2e8f0;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* Calculator */
+        .calculator-display {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 2rem;
+            text-align: right;
+            margin-bottom: 1rem;
+            min-height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border: 1px solid #334155;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .calc-btn {
+            padding: 1.25rem;
+            font-size: 1.25rem;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .calc-btn:hover {
+            background: #0f172a;
+            border-color: #6366f1;
+        }
+
+        .calc-operator {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+        }
+
+        .calc-clear {
+            background: #ef4444;
+            color: white;
+            border: none;
+        }
+
+        .calc-equals {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            color: white;
+            border: none;
+        }
+
+        /* Todo App */
+        .todo-input-container {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .todo-input {
+            flex: 1;
+            padding: 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #e2e8f0;
+            font-size: 1rem;
+        }
+
+        .todo-add-btn {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .todo-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .todo-select {
+            padding: 0.75rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .todo-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #0f172a;
+            border-radius: 0.5rem;
+        }
+
+        .todo-stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .todo-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .todo-stat-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .todo-filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .todo-filter-btn {
+            padding: 0.5rem 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .todo-filter-btn.active {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+        }
+
+        .todo-list {
+            list-style: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .todo-item {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0.5rem;
+        }
+
+        .todo-item.priority-high {
+            border-left: 3px solid #ef4444;
+        }
+
+        .todo-item.priority-medium {
+            border-left: 3px solid #f59e0b;
+        }
+
+        .todo-item.priority-low {
+            border-left: 3px solid #10b981;
+        }
+
+        .todo-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .todo-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .todo-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .todo-text {
+            color: #e2e8f0;
+        }
+
+        .todo-item.completed .todo-text {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+
+        .todo-delete {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+
+        .todo-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .todo-category-work {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+        }
+
+        .todo-category-personal {
+            background: rgba(236, 72, 153, 0.2);
+            color: #ec4899;
+        }
+
+        .todo-category-shopping {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .todo-category-other {
+            background: rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+        }
+
+        /* Tic Tac Toe */
+        .ttt-game {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .ttt-status {
+            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #0f172a;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+
+        .ttt-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ttt-cell {
+            aspect-ratio: 1;
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 0.5rem;
+            font-size: 3rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .ttt-cell:hover:not(.filled) {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+        }
+
+        .ttt-cell.x {
+            color: #6366f1;
+        }
+
+        .ttt-cell.o {
+            color: #ec4899;
+        }
+
+        .ttt-cell.winner {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .ttt-reset {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Quiz App */
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quiz-difficulty {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .difficulty-btn {
+            padding: 1.5rem 1rem;
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 0.5rem;
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .difficulty-btn:hover {
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .quiz-game {
+            display: none;
+        }
+
+        .quiz-game.active {
+            display: block;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #0f172a;
+            border-radius: 0.5rem;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #0f172a;
+            border-radius: 0.5rem;
+            border-left: 4px solid #6366f1;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            padding: 1.25rem;
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .quiz-option:hover:not(.correct):not(.incorrect) {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .quiz-next-btn {
+            flex: 1;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .quiz-next-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+        }
+
+        .quiz-result.active {
+            display: block;
+        }
+
+        .quiz-result-score {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 2rem 0;
+        }
+
+        /* Contact */
+        .contact {
+            background: #0f172a;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 3rem;
+            border-radius: 1rem;
+            border: 1px solid #334155;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #94a3b8;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            background: #1e293b;
+            padding: 3rem 0;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AR</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Amir Raza</h1>
+            <h2>College Student</h2>
+            <p>Learning, building, and exploring the world of technology</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                <p>I'm a passionate college student with a keen interest in web development and technology. I enjoy learning new skills and applying them to create interesting projects and applications.</p>
+                <p>Through hands-on experience and continuous learning, I'm building a strong foundation in modern web technologies while exploring the endless possibilities of software development.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>HTML5</h3>
+                    <p>Semantic markup and accessibility</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS3</h3>
+                    <p>Modern styling and animations</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>Interactive functionality</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">🧮</div>
+                    <div class="project-content">
+                        <h3>Calculator App</h3>
+                        <p>A functional arithmetic calculator with modern UI supporting basic operations</p>
+                        <button class="btn btn-primary" onclick="openModal('calculator')">Launch App</button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">✓</div>
+                    <div class="project-content">
+                        <h3>To-Do App</h3>
+                        <p>Task management with priorities, categories, and local storage</p>
+                        <button class="btn btn-primary" onclick="openModal('todo')">Launch App</button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">⭕</div>
+                    <div class="project-content">
+                        <h3>Tic-Tac-Toe</h3>
+                        <p>Classic game for two players with win detection</p>
+                        <button class="btn btn-primary" onclick="openModal('tictactoe')">Launch Game</button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">❓</div>
+                    <div class="project-content">
+                        <h3>Quiz App</h3>
+                        <p>Test your knowledge with multiple difficulty levels</p>
+                        <button class="btn btn-primary" onclick="openModal('quiz')">Launch Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="submitForm()">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Amir Raza. All rights reserved.</p>
+    </footer>
+
+    <!-- Calculator Modal -->
+    <div id="calculator-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Calculator</h3>
+                <button class="modal-close" onclick="closeModal('calculator')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="calculator-display" id="calc-display">0</div>
+                <div class="calculator-buttons">
+                    <button class="calc-btn calc-clear" onclick="clearCalc()">C</button>
+                    <button class="calc-btn calc-operator" onclick="deleteDigit()">⌫</button>
+                    <button class="calc-btn calc-operator" onclick="setOp('/')">/</button>
+                    <button class="calc-btn calc-operator" onclick="setOp('*')">×</button>
+                    <button class="calc-btn" onclick="appendNum('7')">7</button>
+                    <button class="calc-btn" onclick="appendNum('8')">8</button>
+                    <button class="calc-btn" onclick="appendNum('9')">9</button>
+                    <button class="calc-btn calc-operator" onclick="setOp('-')">-</button>
+                    <button class="calc-btn" onclick="appendNum('4')">4</button>
+                    <button class="calc-btn" onclick="appendNum('5')">5</button>
+                    <button class="calc-btn" onclick="appendNum('6')">6</button>
+                    <button class="calc-btn calc-operator" onclick="setOp('+')">+</button>
+                    <button class="calc-btn" onclick="appendNum('1')">1</button>
+                    <button class="calc-btn" onclick="appendNum('2')">2</button>
+                    <button class="calc-btn" onclick="appendNum('3')">3</button>
+                    <button class="calc-btn calc-equals" onclick="calculate()" style="grid-row: span 2;">=</button>
+                    <button class="calc-btn" onclick="appendNum('0')" style="grid-column: span 2;">0</button>
+                    <button class="calc-btn" onclick="appendNum('.')">.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Todo Modal -->
+    <div id="todo-modal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>Task Manager</h3>
+                <button class="modal-close" onclick="closeModal('todo')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="todo-input-container">
+                    <input type="text" id="todo-input" class="todo-input" placeholder="Add a new task...">
+                    <button class="todo-add-btn" onclick="addTodo()">+ Add</button>
+                </div>
+                <div class="todo-controls">
+                    <select id="todo-category" class="todo-select">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="todo-priority" class="todo-select">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <input type="date" id="todo-due-date" class="todo-select">
+                </div>
+                <div class="todo-stats">
+                    <div class="todo-stat">
+                        <div class="todo-stat-number" id="total-tasks">0</div>
+                        <div class="todo-stat-label">Total</div>
+                    </div>
+                    <div class="todo-stat">
+                        <div class="todo-stat-number" id="active-tasks">0</div>
+                        <div class="todo-stat-label">Active</div>
+                    </div>
+                    <div class="todo-stat">
+                        <div class="todo-stat-number" id="completed-tasks">0</div>
+                        <div class="todo-stat-label">Completed</div>
+                    </div>
+                </div>
+                <div class="todo-filters">
+                    <button class="todo-filter-btn active" onclick="filterTodos('all')">All</button>
+                    <button class="todo-filter-btn" onclick="filterTodos('active')">Active</button>
+                    <button class="todo-filter-btn" onclick="filterTodos('completed')">Completed</button>
+                </div>
+                <ul id="todo-list" class="todo-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tic Tac Toe Modal -->
+    <div id="tictactoe-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Tic-Tac-Toe</h3>
+                <button class="modal-close" onclick="closeModal('tictactoe')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="ttt-game">
+                    <div class="ttt-status" id="ttt-status">Player X's Turn</div>
+                    <div class="ttt-board" id="ttt-board">
+                        <div class="ttt-cell" onclick="tttClick(0)"></div>
+                        <div class="ttt-cell" onclick="tttClick(1)"></div>
+                        <div class="ttt-cell" onclick="tttClick(2)"></div>
+                        <div class="ttt-cell" onclick="tttClick(3)"></div>
+                        <div class="ttt-cell" onclick="tttClick(4)"></div>
+                        <div class="ttt-cell" onclick="tttClick(5)"></div>
+                        <div class="ttt-cell" onclick="tttClick(6)"></div>
+                        <div class="ttt-cell" onclick="tttClick(7)"></div>
+                        <div class="ttt-cell" onclick="tttClick(8)"></div>
+                    </div>
+                    <button class="ttt-reset" onclick="resetTTT()">Reset Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>Quiz App</h3>
+                <button class="modal-close" onclick="closeModal('quiz')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="quiz-container">
+                    <div id="quiz-start">
+                        <h2 style="text-align: center; margin-bottom: 1rem;">Test Your Knowledge!</h2>
+                        <p style="text-align: center; color: #94a3b8; margin-bottom: 2rem;">Choose your difficulty</p>
+                        <div class="quiz-difficulty">
+                            <button class="difficulty-btn" onclick="startQuiz('easy')">😊<br>Easy</button>
+                            <button class="difficulty-btn" onclick="startQuiz('medium')">🤔<br>Medium</button>
+                            <button class="difficulty-btn" onclick="startQuiz('hard')">🔥<br>Hard</button>
+                        </div>
+                    </div>
+                    <div id="quiz-game" class="quiz-game">
+                        <div class="quiz-header">
+                            <div id="quiz-progress">Question 1/10</div>
+                            <div id="quiz-score" style="color: #6366f1; font-weight: 600;">Score: 0</div>
+                        </div>
+                        <div class="quiz-question" id="quiz-question"></div>
+                        <div class="quiz-options" id="quiz-options"></div>
+                        <div class="quiz-actions">
+                            <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()" disabled>Next</button>
+                        </div>
+                    </div>
+                    <div id="quiz-result" class="quiz-result">
+                        <h2>Quiz Complete!</h2>
+                        <div class="quiz-result-score" id="quiz-result-score">0/10</div>
+                        <p id="quiz-result-msg" style="font-size: 1.25rem; margin-bottom: 2rem;"></p>
+                        <button class="btn btn-primary" onclick="restartQuiz()">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openModal(id) {
+            document.getElementById(id + '-modal').classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id + '-modal').classList.remove('active');
+        }
+
+        // Calculator
+        let calcValue = '0';
+        let calcPrev = null;
+        let calcOp = null;
+        let calcReset = false;
+
+        function updateCalcDisplay() {
+            document.getElementById('calc-display').textContent = calcValue;
+        }
+
+        function clearCalc() {
+            calcValue = '0';
+            calcPrev = null;
+            calcOp = null;
+            calcReset = false;
+            updateCalcDisplay();
+        }
+
+        function deleteDigit() {
+            calcValue = calcValue.length > 1 ? calcValue.slice(0, -1) : '0';
+            updateCalcDisplay();
+        }
+
+        function appendNum(num) {
+            if (calcReset) {
+                calcValue = num;
+                calcReset = false;
+            } else {
+                calcValue = calcValue === '0' ? num : calcValue + num;
+            }
+            updateCalcDisplay();
+        }
+
+        function setOp(op) {
+            if (calcPrev !== null && calcOp !== null && !calcReset) calculate();
+            calcPrev = calcValue;
+            calcOp = op;
+            calcReset = true;
+        }
+
+        function calculate() {
+            if (calcPrev === null || calcOp === null) return;
+            const prev = parseFloat(calcPrev);
+            const current = parseFloat(calcValue);
+            let result;
+            switch(calcOp) {
+                case '+': result = prev + current; break;
+                case '-': result = prev - current; break;
+                case '*': result = prev * current; break;
+                case '/': result = current === 0 ? 0 : prev / current; break;
+            }
+            calcValue = String(Math.round(result * 100000) / 100000);
+            calcOp = null;
+            calcPrev = null;
+            calcReset = true;
+            updateCalcDisplay();
+        }
+
+        // Todo App
+        let todos = [];
+        let todoFilter = 'all';
+
+        function loadTodos() {
+            const saved = localStorage.getItem('todos');
+            if (saved) todos = JSON.parse(saved);
+            renderTodos();
+        }
+
+        function saveTodos() {
+            localStorage.setItem('todos', JSON.stringify(todos));
+            updateTodoStats();
+        }
+
+        function updateTodoStats() {
+            document.getElementById('total-tasks').textContent = todos.length;
+            document.getElementById('active-tasks').textContent = todos.filter(t => !t.completed).length;
+            document.getElementById('completed-tasks').textContent = todos.filter(t => t.completed).length;
+        }
+
+        function renderTodos() {
+            const list = document.getElementById('todo-list');
+            list.innerHTML = '';
+            let filtered = todos;
+            if (todoFilter === 'active') filtered = todos.filter(t => !t.completed);
+            if (todoFilter === 'completed') filtered = todos.filter(t => t.completed);
+            
+            filtered.forEach((todo, i) => {
+                const actualIndex = todos.indexOf(todo);
+                const li = document.createElement('li');
+                li.className = `todo-item ${todo.completed ? 'completed' : ''} priority-${todo.priority}`;
+                li.innerHTML = `
+                    <div class="todo-item-header">
+                        <div class="todo-content">
+                            <input type="checkbox" class="todo-checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleTodo(${actualIndex})">
+                            <span class="todo-text">${todo.text}</span>
+                            <span class="todo-badge todo-category-${todo.category}">${todo.category}</span>
+                        </div>
+                        <button class="todo-delete" onclick="deleteTodo(${actualIndex})">Delete</button>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+            updateTodoStats();
+        }
+
+        function addTodo() {
+            const input = document.getElementById('todo-input');
+            const text = input.value.trim();
+            if (text) {
+                todos.push({
+                    text: text,
+                    completed: false,
+                    category: document.getElementById('todo-category').value,
+                    priority: document.getElementById('todo-priority').value,
+                    dueDate: document.getElementById('todo-due-date').value
+                });
+                input.value = '';
+                saveTodos();
+                renderTodos();
+            }
+        }
+
+        function toggleTodo(index) {
+            todos[index].completed = !todos[index].completed;
+            saveTodos();
+            renderTodos();
+        }
+
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            saveTodos();
+            renderTodos();
+        }
+
+        function filterTodos(filter) {
+            todoFilter = filter;
+            document.querySelectorAll('.todo-filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderTodos();
+        }
+
+        // Tic Tac Toe
+        let tttBoard = ['','','','','','','','',''];
+        let tttPlayer = 'X';
+        let tttActive = true;
+
+        function tttClick(index) {
+            if (tttBoard[index] || !tttActive) return;
+            tttBoard[index] = tttPlayer;
+            const cells = document.querySelectorAll('.ttt-cell');
+            cells[index].textContent = tttPlayer;
+            cells[index].classList.add('filled', tttPlayer.toLowerCase());
+            
+            if (checkTTTWin()) {
+                document.getElementById('ttt-status').textContent = `Player ${tttPlayer} Wins! 🎉`;
+                tttActive = false;
+                highlightWinner();
+            } else if (tttBoard.every(c => c)) {
+                document.getElementById('ttt-status').textContent = "It's a Draw! 🤝";
+                tttActive = false;
+            } else {
+                tttPlayer = tttPlayer === 'X' ? 'O' : 'X';
+                document.getElementById('ttt-status').textContent = `Player ${tttPlayer}'s Turn`;
+            }
+        }
+
+        function checkTTTWin() {
+            const patterns = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            return patterns.some(p => tttBoard[p[0]] && tttBoard[p[0]] === tttBoard[p[1]] && tttBoard[p[0]] === tttBoard[p[2]]);
+        }
+
+        function highlightWinner() {
+            const patterns = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            const cells = document.querySelectorAll('.ttt-cell');
+            patterns.forEach(p => {
+                if (tttBoard[p[0]] && tttBoard[p[0]] === tttBoard[p[1]] && tttBoard[p[0]] === tttBoard[p[2]]) {
+                    cells[p[0]].classList.add('winner');
+                    cells[p[1]].classList.add('winner');
+                    cells[p[2]].classList.add('winner');
+                }
+            });
+        }
+
+        function resetTTT() {
+            tttBoard = ['','','','','','','','',''];
+            tttPlayer = 'X';
+            tttActive = true;
+            document.getElementById('ttt-status').textContent = "Player X's Turn";
+            document.querySelectorAll('.ttt-cell').forEach(cell => {
+                cell.textContent = '';
+                cell.className = 'ttt-cell';
+            });
+        }
+
+        // Quiz App
+        const quizData = {
+            easy: [
+                {q: "What is 5 + 7?", o: ["10","11","12","13"], a: 2},
+                {q: "What color is the sky?", o: ["Green","Blue","Red","Yellow"], a: 1},
+                {q: "How many days in a week?", o: ["5","6","7","8"], a: 2},
+                {q: "Capital of France?", o: ["London","Paris","Berlin","Madrid"], a: 1},
+                {q: "How many legs does a cat have?", o: ["2","4","6","8"], a: 1},
+                {q: "What is 10 - 3?", o: ["6","7","8","9"], a: 1},
+                {q: "Which is a fruit?", o: ["Carrot","Apple","Potato","Onion"], a: 1},
+                {q: "How many continents?", o: ["5","6","7","8"], a: 2},
+                {q: "What is 2 x 5?", o: ["8","9","10","11"], a: 2},
+                {q: "Which animal says 'meow'?", o: ["Dog","Cat","Cow","Sheep"], a: 1}
+            ],
+            medium: [
+                {q: "Square root of 144?", o: ["10","11","12","13"], a: 2},
+                {q: "Who wrote Romeo and Juliet?", o: ["Dickens","Shakespeare","Twain","Austen"], a: 1},
+                {q: "Largest planet?", o: ["Earth","Mars","Jupiter","Saturn"], a: 2},
+                {q: "WWII end year?", o: ["1943","1944","1945","1946"], a: 2},
+                {q: "Symbol for gold?", o: ["Go","Gd","Au","Ag"], a: 2},
+                {q: "Speed of light?", o: ["300,000 km/s","150,000","450,000","600,000"], a: 0},
+                {q: "Smallest prime?", o: ["0","1","2","3"], a: 2},
+                {q: "Capital of Australia?", o: ["Sydney","Melbourne","Canberra","Brisbane"], a: 2},
+                {q: "H2O is?", o: ["Oxygen","Hydrogen","Water","CO2"], a: 2},
+                {q: "Bones in adult body?", o: ["186","206","226","246"], a: 1}
+            ],
+            hard: [
+                {q: "Planck constant?", o: ["6.626×10⁻³⁴","3.14×10⁻³⁴","1.602×10⁻¹⁹","9.109×10⁻³¹"], a: 0},
+                {q: "Longest river?", o: ["Amazon","Nile","Yangtze","Mississippi"], a: 1},
+                {q: "First programmable computer?", o: ["1936","1941","1945","1950"], a: 1},
+                {q: "√2 approximately?", o: ["1.414","1.732","2.236","2.828"], a: 0},
+                {q: "First programming language?", o: ["C","FORTRAN","BASIC","Pascal"], a: 1},
+                {q: "Saturn's largest moon?", o: ["Europa","Titan","Ganymede","Callisto"], a: 1},
+                {q: "Who wrote Divine Comedy?", o: ["Dante","Homer","Virgil","Ovid"], a: 0},
+                {q: "Carbon-14 half-life?", o: ["5,730 years","10,000","1,000","50,000"], a: 0},
+                {q: "Byzantine Empire fell?", o: ["1204","1453","1492","1517"], a: 1},
+                {q: "Theory of relativity?", o: ["Newton","Bohr","Einstein","Hawking"], a: 2}
+            ]
+        };
+
+        let quizQuestions, quizIndex, quizScore, quizSelected;
+
+        function startQuiz(level) {
+            quizQuestions = quizData[level];
+            quizIndex = 0;
+            quizScore = 0;
+            quizSelected = null;
+            document.getElementById('quiz-start').style.display = 'none';
+            document.getElementById('quiz-game').classList.add('active');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = quizQuestions[quizIndex];
+            document.getElementById('quiz-progress').textContent = `Question ${quizIndex+1}/${quizQuestions.length}`;
+            document.getElementById('quiz-score').textContent = `Score: ${quizScore}`;
+            document.getElementById('quiz-question').textContent = q.q;
+            const opts = document.getElementById('quiz-options');
+            opts.innerHTML = '';
+            quizSelected = null;
+            document.getElementById('quiz-next-btn').disabled = true;
+            q.o.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(i);
+                opts.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(index) {
+            if (quizSelected !== null) return;
+            quizSelected = index;
+            const q = quizQuestions[quizIndex];
+            const opts = document.querySelectorAll('.quiz-option');
+            opts.forEach((opt, i) => {
+                opt.disabled = true;
+                if (i === q.a) opt.classList.add('correct');
+                if (i === quizSelected && i !== q.a) opt.classList.add('incorrect');
+            });
+            if (quizSelected === q.a) quizScore++;
+            document.getElementById('quiz-score').textContent = `Score: ${quizScore}`;
+            document.getElementById('quiz-next-btn').disabled = false;
+        }
+
+        function nextQuestion() {
+            quizIndex++;
+            if (quizIndex < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-game').classList.remove('active');
+            document.getElementById('quiz-result').classList.add('active');
+            const pct = Math.round((quizScore / quizQuestions.length) * 100);
+            document.getElementById('quiz-result-score').textContent = `${quizScore}/${quizQuestions.length}`;
+            let msg = pct === 100 ? 'Perfect! 🎉' : pct >= 80 ? 'Excellent! 🌟' : pct >= 60 ? 'Good job! 👍' : 'Keep practicing! 💪';
+            document.getElementById('quiz-result-msg').textContent = msg;
+        }
+
+        function restartQuiz() {
+            document.getElementById('quiz-result').classList.remove('active');
+            document.getElementById('quiz-start').style.display = 'block';
+        }
+
+        // Contact Form
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            if (name && email && message) {
+                alert('Thank you! Your message has been sent.');
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Load todos on page load
+        window.addEventListener('load', loadTodos);
+
+        // Close modals on outside click
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
